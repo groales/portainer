@@ -1,0 +1,32 @@
+# Archivos de entorno reales
+stack.env
+*.env
+
+# Volúmenes y datos persistentes
+data/
+portainer-data/
+docker_data/
+
+# Certificados
+*.pem
+*.key
+*.crt
+acme.json
+
+# Logs
+log/
+logs/
+
+# Backups
+backup/
+backups/
+*.tar
+*.gz
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
