@@ -28,7 +28,6 @@ https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
 - Volumen persistente `portainer_data` montado en `/data` para conservar la configuración.
 - Puertos:
 	- `9443:9443` (UI HTTPS de Portainer)
-	- `8000:8000` (opcional; para Edge Agents). Si no lo necesitas, puedes eliminar esta línea.
 - Red `portainer_network` (por defecto).
 
 ## Archivo Compose
@@ -45,7 +44,7 @@ services:
 			- portainer_data:/data
 		ports:
 			- 9443:9443
-			- 8000:8000  # Remove if you do not intend to use Edge Agents
+
 
 volumes:
 	portainer_data:
@@ -82,9 +81,17 @@ docker ps --filter name=portainer
 
 ## Notas y buenas prácticas
 - Mantén el volumen `portainer_data` para persistir configuración y datos.
-- Si no usas Edge Agents, elimina el mapeo de puerto `8000:8000`.
 - Para exponer Portainer a Internet, usa un proxy inverso (Traefik/Nginx) con TLS y reglas de acceso.
 - Limita el acceso a la UI mediante firewall/VPN.
+
+### Edge Agents (opcional)
+Este stack no expone el puerto `8000` por defecto. Si necesitas gestionar agentes remotos (Edge), añade de nuevo el puerto en la sección `ports`:
+
+```yaml
+		ports:
+			- 9443:9443
+			- 8000:8000
+```
 
 ## Documentación adicional
 - Guía inicial: [`docs/Home.md`](docs/Home.md)
