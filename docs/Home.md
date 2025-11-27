@@ -39,7 +39,7 @@ docker-compose up -d
 4. Verifica que el contenedor está corriendo:
 
 ```powershell
-docke ps --filter name=portainer
+docker ps --filter name=portainer
 ```
 
 5. Accede a la interfaz en: https://<HOST>:9443
