@@ -1,17 +1,5 @@
 # Infraestructura: Portainer
 
-Este repositorio contiene el despliegue de **Portainer CE** para la gestión centralizada de contenedores Docker.
-
-## 🧩 Componentes
-
-
-## 🚀 Despliegue
-
-1. Crear `.env` desde el ejemplo:
-
-```bash
-cp .env.example .env
-```
 # Portainer CE — Despliegue con Docker Compose (Linux)
 
 Este repositorio proporciona una forma sencilla de desplegar **Portainer Community Edition (CE)** usando Docker Compose en Linux, siguiendo las recomendaciones oficiales:
@@ -97,6 +85,7 @@ Este stack no expone el puerto `8000` por defecto. Si necesitas gestionar agente
 - Guía inicial: [`docs/Home.md`](docs/Home.md)
 - Instalación avanzada y TLS: [`docs/Instalacion.md`](docs/Instalacion.md)
 - Backup/Restore del volumen `data`: [`docs/Backup.md`](docs/Backup.md)
+ - Proxy inverso y TLS con Traefik: [`docs/Traefik.md`](docs/Traefik.md)
 
 ## Solución de problemas
 - Puerto ocupado (`9443/8000`): comprueba procesos con `netstat` o `Get-NetTCPConnection` y ajusta puertos en `docker-compose.yaml`.
