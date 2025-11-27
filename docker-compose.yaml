@@ -4,10 +4,9 @@ services:
     container_name: portainer
     restart: always
     env_file:
-      - stack.env
+      - .env
     ports:
       - "9443:9443"   # HTTPS UI
-      - "8000:8000"   # Edge agent (opcional)
     volumes:
       - data:/data
       - /var/run/docker.sock:/var/run/docker.sock

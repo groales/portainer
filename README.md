@@ -12,7 +12,7 @@ Este repositorio contiene el despliegue de **Portainer CE** para la gestión cen
 
 ## 🚀 Despliegue
 
-1. Crear `stack.env` desde el ejemplo:
+1. Crear `.env` desde el ejemplo:
 
 ```bash
-cp stack.env.example stack.env
+cp stack.env.example .env
