@@ -90,4 +90,15 @@ docker ps --filter name=portainer
 - Guía inicial: [`docs/Home.md`](docs/Home.md)
 - Instalación avanzada y TLS: [`docs/Instalacion.md`](docs/Instalacion.md)
 - Backup/Restore del volumen `data`: [`docs/Backup.md`](docs/Backup.md)
+
+## Solución de problemas
+- Puerto ocupado (`9443/8000`): comprueba procesos con `netstat` o `Get-NetTCPConnection` y ajusta puertos en `docker-compose.yaml`.
+- Permisos sobre `/var/run/docker.sock`: ejecuta con un usuario que pertenezca al grupo `docker` (Linux) o valida que Docker Desktop esté activo (Windows WSL2).
+- Certificados/TLS: si accedes por `https://` y hay advertencias, usa un proxy inverso con certificados válidos o configura confiables en el cliente.
+- Contenedor no arranca: revisa logs con `docker logs portainer` y valida que el volumen `portainer_data` exista.
+
+## Personalización rápida
+- Eliminar Edge Agents: borra la línea `- 8000:8000` en `ports:`.
+- Cambiar nombre de red/volumen: ajusta `name: portainer_network` y `name: portainer_data` en las secciones `networks` y `volumes`.
+- Variables mediante `.env`: añade valores personalizados y referencia desde el compose si lo necesitas.
 	- `docs/Traefik.md` — integración con proxy reverso
