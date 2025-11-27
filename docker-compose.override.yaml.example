@@ -1,0 +1,31 @@
+# docker-compose.override.yaml.example
+#
+# Este archivo muestra cómo añadir labels de Traefik sin modificar docker-compose.yaml.
+# Para usarlo:
+#   1. Copia este archivo a docker-compose.override.yaml
+#   2. Ajusta el dominio (portainer.tudominio.com) y certresolver según tu Traefik
+#   3. Si usas Traefik, comenta o elimina "ports:" en el override para no exponer directamente
+#
+# Docker Compose automáticamente fusiona docker-compose.yaml + docker-compose.override.yaml
+
+services:
+  portainer:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.tudominio.com`)"
+      - "traefik.http.routers.portainer.entryPoints=websecure"
+      - "traefik.http.routers.portainer.tls=true"
+      - "traefik.http.routers.portainer.tls.certresolver=myresolver"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9443"
+      - "traefik.http.services.portainer.loadbalancer.server.scheme=https"
+    # Opcional: eliminar exposición directa del puerto si solo usas Traefik
+    # ports: []
+    networks:
+      - portainer_network
+      - traefik_network  # Asegúrate de que esta red exista (externa o compartida con Traefik)
+
+networks:
+  traefik_network:
+    external: true  # Si Traefik corre en una red externa llamada "traefik_network"
+  portainer_network:
+    external: false
