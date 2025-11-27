@@ -4,24 +4,90 @@ Este repositorio contiene el despliegue de **Portainer CE** para la gestión cen
 
 ## 🧩 Componentes
 
-- `docker-compose.yml` → definición del stack
-- `stack.env.example` → plantilla de configuración (no contiene secretos)
-- `scripts/backup.sh` → script básico para backups
-- `scripts/restore.sh` → restauración
-- `.gitignore` → evita subir volúmenes y secretos
 
 ## 🚀 Despliegue
 
 1. Crear `.env` desde el ejemplo:
 
 ```bash
-cp stack.env.example .env
+cp .env.example .env
+```
+# Portainer CE — Despliegue con Docker Compose (Linux)
+
+Este repositorio proporciona una forma sencilla de desplegar **Portainer Community Edition (CE)** usando Docker Compose en Linux, siguiendo las recomendaciones oficiales:
+https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
+
+## Requisitos
+- Docker y Docker Compose instalados en el host.
+- Usuario con permisos para acceder a `/var/run/docker.sock`.
+- Conectividad a los puertos necesarios.
+
+## Qué incluye este stack
+- Servicio `portainer` con la imagen `portainer/portainer-ce:lts`.
+- Montaje del socket Docker: `/var/run/docker.sock:/var/run/docker.sock`.
+- Volumen persistente `portainer_data` montado en `/data` para conservar la configuración.
+- Puertos:
+	- `9443:9443` (UI HTTPS de Portainer)
+	- `8000:8000` (opcional; para Edge Agents). Si no lo necesitas, puedes eliminar esta línea.
+- Red `portainer_network` (por defecto).
+
+## Archivo Compose
+El `docker-compose.yaml` actual contiene:
+
+```yaml
+services:
+	portainer:
+		container_name: portainer
+		image: portainer/portainer-ce:lts
+		restart: always
+		volumes:
+			- /var/run/docker.sock:/var/run/docker.sock
+			- portainer_data:/data
+		ports:
+			- 9443:9443
+			- 8000:8000  # Remove if you do not intend to use Edge Agents
+
+volumes:
+	portainer_data:
+		name: portainer_data
+
+networks:
+	default:
+		name: portainer_network
 ```
 
-## 📚 Documentación
+## Pasos de despliegue (PowerShell en Windows o bash equivalente en Linux)
+1) Clonar el repositorio (si no lo tienes):
+```powershell
+cd C:\Users\gustavo.roales.ICT-IBERIA\repos
+git clone https://git.ictiberia.com/infraestructura/infra-portainer
+cd infra-portainer
+```
 
+2) (Opcional) Crear y ajustar `.env` si lo usas para variables adicionales.
+
+3) Levantar Portainer con Docker Compose:
+```powershell
+docker compose up -d
+```
+
+4) Verificar que Portainer está en ejecución:
+```powershell
+docker ps --filter name=portainer
+```
+
+5) Acceder a la interfaz web:
+- URL: `https://<HOST>:9443`
+- Al primer acceso, Portainer te pedirá crear el usuario administrador.
+
+## Notas y buenas prácticas
+- Mantén el volumen `portainer_data` para persistir configuración y datos.
+- Si no usas Edge Agents, elimina el mapeo de puerto `8000:8000`.
+- Para exponer Portainer a Internet, usa un proxy inverso (Traefik/Nginx) con TLS y reglas de acceso.
+- Limita el acceso a la UI mediante firewall/VPN.
+
+## Documentación adicional
 - Guía inicial: [`docs/Home.md`](docs/Home.md)
-- Próximas páginas sugeridas:
-	- `docs/Instalacion.md` — instalación avanzada y TLS
-	- `docs/Backup.md` — backup/restore del volumen `data`
+- Instalación avanzada y TLS: [`docs/Instalacion.md`](docs/Instalacion.md)
+- Backup/Restore del volumen `data`: [`docs/Backup.md`](docs/Backup.md)
 	- `docs/Traefik.md` — integración con proxy reverso
