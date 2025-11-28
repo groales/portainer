@@ -82,10 +82,11 @@ Este stack no expone el puerto `8000` por defecto. Si necesitas gestionar agente
 ```
 
 ## Documentación adicional
-- Guía inicial: [`docs/Home.md`](docs/Home.md)
-- Instalación avanzada y TLS: [`docs/Instalacion.md`](docs/Instalacion.md)
-- Backup/Restore del volumen `data`: [`docs/Backup.md`](docs/Backup.md)
- - Proxy inverso y TLS con Traefik: [`docs/Traefik.md`](docs/Traefik.md)
+Consulta la [**Wiki del proyecto**](https://git.ictiberia.com/ICT-IT/portainer/wiki) para documentación detallada:
+- [Guía inicial](https://git.ictiberia.com/ICT-IT/portainer/wiki/Home)
+- [Instalación avanzada y TLS](https://git.ictiberia.com/ICT-IT/portainer/wiki/Instalacion)
+- [Backup/Restore del volumen data](https://git.ictiberia.com/ICT-IT/portainer/wiki/Backup)
+- [Proxy inverso y TLS con Traefik](https://git.ictiberia.com/ICT-IT/portainer/wiki/Traefik)
 
 ## Solución de problemas
 - Puerto ocupado (`9443/8000`): comprueba procesos con `netstat` o `Get-NetTCPConnection` y ajusta puertos en `docker-compose.yaml`.
