@@ -47,7 +47,7 @@ networks:
 1) Clonar el repositorio (si no lo tienes):
 ```powershell
 cd C:\Users\gustavo.roales.ICT-IBERIA\repos
-git clone https://git.ictiberia.com/ICT-IT/portainer
+git clone https://git.ictiberia.com/groales/portainer
 cd portainer
 ```
 
@@ -82,11 +82,11 @@ Este stack no expone el puerto `8000` por defecto. Si necesitas gestionar agente
 ```
 
 ## Documentación adicional
-Consulta la [**Wiki del proyecto**](https://git.ictiberia.com/ICT-IT/portainer/wiki) para documentación detallada:
-- [Guía inicial](https://git.ictiberia.com/ICT-IT/portainer/wiki/Home)
-- [Instalación avanzada y TLS](https://git.ictiberia.com/ICT-IT/portainer/wiki/Instalacion)
-- [Backup/Restore del volumen data](https://git.ictiberia.com/ICT-IT/portainer/wiki/Backup)
-- [Proxy inverso y TLS con Traefik](https://git.ictiberia.com/ICT-IT/portainer/wiki/Traefik)
+Consulta la [**Wiki del proyecto**](https://git.ictiberia.com/groales/portainer/wiki) para documentación detallada:
+- [Guía inicial](https://git.ictiberia.com/groales/portainer/wiki/Home)
+- [Instalación avanzada y TLS](https://git.ictiberia.com/groales/portainer/wiki/Instalacion)
+- [Backup/Restore del volumen data](https://git.ictiberia.com/groales/portainer/wiki/Backup)
+- [Proxy inverso y TLS con Traefik](https://git.ictiberia.com/groales/portainer/wiki/Traefik)
 
 ## Solución de problemas
 - Puerto ocupado (`9443/8000`): comprueba procesos con `netstat` o `Get-NetTCPConnection` y ajusta puertos en `docker-compose.yaml`.
