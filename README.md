@@ -47,8 +47,8 @@ networks:
 1) Clonar el repositorio (si no lo tienes):
 ```powershell
 cd C:\Users\gustavo.roales.ICT-IBERIA\repos
-git clone https://git.ictiberia.com/infraestructura/infra-portainer
-cd infra-portainer
+git clone https://git.ictiberia.com/ICT-IT/portainer
+cd portainer
 ```
 
 2) (Opcional) Crear y ajustar `.env` si lo usas para variables adicionales.
