@@ -46,24 +46,21 @@ networks:
 ## Pasos de despliegue (PowerShell en Windows o bash equivalente en Linux)
 1) Clonar el repositorio (si no lo tienes):
 ```powershell
-cd C:\Users\gustavo.roales.ICT-IBERIA\repos
 git clone https://git.ictiberia.com/groales/portainer
 cd portainer
 ```
 
-2) (Opcional) Crear y ajustar `.env` si lo usas para variables adicionales.
-
-3) Levantar Portainer con Docker Compose:
+2) Levantar Portainer con Docker Compose:
 ```powershell
 docker compose up -d
 ```
 
-4) Verificar que Portainer está en ejecución:
+3) Verificar que Portainer está en ejecución:
 ```powershell
 docker ps --filter name=portainer
 ```
 
-5) Acceder a la interfaz web:
+4) Acceder a la interfaz web:
 - URL: `https://<HOST>:9443`
 - Al primer acceso, Portainer te pedirá crear el usuario administrador.
 
