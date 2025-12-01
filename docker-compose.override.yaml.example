@@ -25,6 +25,10 @@ services:
       # Service backend
       - "traefik.http.services.portainer.loadbalancer.server.port=9443"
       - "traefik.http.services.portainer.loadbalancer.server.scheme=https"
+      - "traefik.http.services.portainer.loadbalancer.serversTransport=portainer-transport"
+      
+      # ServersTransport para deshabilitar verificación TLS (certificado autofirmado)
+      - "traefik.http.serversTransports.portainer-transport.insecureSkipVerify=true"
       
       # Middlewares de seguridad (opcional)
       - "traefik.http.routers.portainer.middlewares=security-headers@file"
