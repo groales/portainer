@@ -25,14 +25,13 @@ El `docker-compose.yaml` actual contiene:
 services:
 	portainer:
 		container_name: portainer
-		image: portainer/portainer-ce:lts
+		image: portainer/portainer-ce
 		restart: always
 		volumes:
 			- /var/run/docker.sock:/var/run/docker.sock
 			- portainer_data:/data
 		ports:
 			- 9443:9443
-
 
 volumes:
 	portainer_data:
