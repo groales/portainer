@@ -1,6 +1,6 @@
 # Infraestructura: Portainer
 
-# Portainer CE — Despliegue con Docker Compose (Linux)
+# Portainer CE — Despliegue con Docker Compose
 
 Este repositorio proporciona una forma sencilla de desplegar **Portainer Community Edition (CE)** usando Docker Compose en Linux, siguiendo las recomendaciones oficiales:
 https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
@@ -42,7 +42,7 @@ networks:
 		name: portainer_network
 ```
 
-## Pasos de despliegue (PowerShell en Windows o bash equivalente en Linux)
+## Pasos de despliegue
 1) Clonar el repositorio (si no lo tienes):
 ```powershell
 git clone https://git.ictiberia.com/groales/portainer
