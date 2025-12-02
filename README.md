@@ -19,7 +19,7 @@ https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
 - Red `portainer_network` (por defecto).
 
 ## Archivo Compose
-El `docker-compose.yaml` actual contiene:
+El `docker-compose.yml` actual contiene:
 
 ```yaml
 services:
