@@ -77,6 +77,26 @@ Este stack no expone el puerto `8000` por defecto. Si necesitas gestionar agente
 			- 8000:8000
 ```
 
+## Integración con Proxy Inverso
+
+Este repositorio incluye archivos de ejemplo para integrar Portainer con Traefik o NPM:
+
+### Con Traefik
+```bash
+cp docker-compose.override.traefik.yml.example docker-compose.override.yml
+# Edita el dominio en docker-compose.override.yml
+docker compose up -d
+```
+
+### Con NGINX Proxy Manager
+```bash
+cp docker-compose.override.npm.yml.example docker-compose.override.yml
+docker compose up -d
+# Configura el proxy host desde la UI de NPM
+```
+
+Ver documentación detallada en la [Wiki - Traefik](https://git.ictiberia.com/groales/portainer/wiki/Traefik).
+
 ## Documentación adicional
 Consulta la [**Wiki del proyecto**](https://git.ictiberia.com/groales/portainer/wiki) para documentación detallada:
 - [Guía inicial](https://git.ictiberia.com/groales/portainer/wiki/Home)
@@ -85,7 +105,7 @@ Consulta la [**Wiki del proyecto**](https://git.ictiberia.com/groales/portainer/
 - [Proxy inverso y TLS con Traefik](https://git.ictiberia.com/groales/portainer/wiki/Traefik)
 
 ## Solución de problemas
-- Puerto ocupado (`9443/8000`): comprueba procesos con `netstat` o `Get-NetTCPConnection` y ajusta puertos en `docker-compose.yaml`.
+- Puerto ocupado (`9443/8000`): comprueba procesos con `netstat` o `Get-NetTCPConnection` y ajusta puertos en `docker-compose.yml`.
 - Permisos sobre `/var/run/docker.sock`: ejecuta con un usuario que pertenezca al grupo `docker` (Linux) o valida que Docker Desktop esté activo (Windows WSL2).
 - Certificados/TLS: si accedes por `https://` y hay advertencias, usa un proxy inverso con certificados válidos o configura confiables en el cliente.
 - Contenedor no arranca: revisa logs con `docker logs portainer` y valida que el volumen `portainer_data` exista.
