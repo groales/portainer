@@ -13,22 +13,13 @@ services:
     networks:
       - proxy
     labels:
-      # Habilitar Traefik
-      - "traefik.enable=true"
-      
-      # Router HTTPS
-      - "traefik.http.routers.portainer.rule=Host(`portainer.tudominio.com`)"
-      - "traefik.http.routers.portainer.entrypoints=websecure"
-      - "traefik.http.routers.portainer.tls=true"
-      - "traefik.http.routers.portainer.tls.certresolver=letsencrypt"
-      
-      # Service backend
-      - "traefik.http.services.portainer.loadbalancer.server.port=9443"
-      - "traefik.http.services.portainer.loadbalancer.server.scheme=https"
-      - "traefik.http.services.portainer.loadbalancer.serversTransport=insecure@file"
-      
-      # Middlewares de seguridad (opcional)
-      - "traefik.http.routers.portainer.middlewares=security-headers@file"
+      - traefik.enable=true     
+      - traefik.http.routers.portainer.rule=Host(`portainer.tudominio.com`)
+      - traefik.http.routers.portainer.entrypoints=websecure
+      - traefik.http.routers.portainer.tls.certresolver=letsencrypt
+      - traefik.http.services.portainer.loadbalancer.server.port=9443
+      - traefik.http.services.portainer.loadbalancer.server.scheme=https
+      - traefik.http.services.portainer.loadbalancer.serversTransport=insecure@file
 
 networks:
   proxy:
