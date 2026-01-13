@@ -15,4 +15,5 @@ volumes:
 
 networks:
   default:
-    name: portainer_network
+    external: true
+    name: proxy
