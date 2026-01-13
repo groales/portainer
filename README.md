@@ -23,23 +23,24 @@ El `docker-compose.yml` actual contiene:
 
 ```yaml
 services:
-	portainer:
-		container_name: portainer
-		image: portainer/portainer-ce
-		restart: always
-		volumes:
-			- /var/run/docker.sock:/var/run/docker.sock
-			- portainer_data:/data
-		ports:
-			- 9443:9443
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    ports:
+      - 9443:9443
 
 volumes:
-	portainer_data:
-		name: portainer_data
+  portainer_data:
+    name: portainer_data
 
 networks:
-	default:
-		name: portainer_network
+  default:
+    external: true
+    name: proxy
 ```
 
 ## Pasos de despliegue
